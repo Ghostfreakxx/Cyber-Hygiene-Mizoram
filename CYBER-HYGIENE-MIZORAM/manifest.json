@@ -1,0 +1,21 @@
+{
+  "name": "Cyber Hygiene Mizoram",
+  "short_name": "Cyber Hygiene",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06080f",
+  "theme_color": "#06080f",
+  "description": "Cyber hygiene awareness and scam safety platform for Mizoram.",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
