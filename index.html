@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Hygiene Mizoram</title>
+  <style>
+    :root {
+      --bg: #06080f;
+      --card: #101624;
+      --card-soft: #151c2e;
+      --text: #f5f7fb;
+      --muted: #a9b2c7;
+      --accent: #58e6c4;
+      --accent-2: #7aa7ff;
+      --danger: #ff6b6b;
+      --line: rgba(255,255,255,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top left, rgba(88,230,196,0.12), transparent 30%),
+                  radial-gradient(circle at top right, rgba(122,167,255,0.10), transparent 28%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 28px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 22px;
+      background: rgba(88,230,196,0.06);
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    button, .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #061018;
+    }
+
+    .secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .terminal-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.8;
+    }
+
+    .terminal-card pre {
+      white-space: pre-wrap;
+      color: #dfe8ff;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 52px);
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 34px;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(16,22,36,0.82);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .checker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    textarea, select, input {
+      width: 100%;
+      background: #080c15;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 14px;
+      font-size: 15px;
+      margin: 8px 0 16px;
+    }
+
+    textarea {
+      min-height: 190px;
+      resize: vertical;
+    }
+
+    .warning {
+      color: var(--danger);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .result-box {
+      background: #080c15;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      min-height: 220px;
+      color: var(--muted);
+    }
+
+    .survey-box {
+      background: linear-gradient(135deg, rgba(88,230,196,0.12), rgba(122,167,255,0.10));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px;
+    }
+
+    form label {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin: 16px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .consent input {
+      width: auto;
+      margin-top: 6px;
+    }
+
+    footer {
+      padding: 40px 8%;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .checker {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">CYBER HYGIENE MIZORAM</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#guide">Guide</a>
+        <a href="#checker">Scam Checker</a>
+        <a href="#survey">Survey</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div>
+        <span class="tag">Research. Awareness. Protection.</span>
+        <h1>Small digital habits can prevent big cyber harm.</h1>
+        <p>
+          A public awareness and ethical data collection platform focused on cyber hygiene, scam exposure, password habits, and digital safety in Mizoram.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#survey">Join Anonymous Survey</a>
+          <a class="btn secondary" href="#checker">Check a Suspicious Message</a>
+        </div>
+      </div>
+
+      <div class="terminal-card">
+        <div class="terminal-top">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <pre>GENESIS SYSTEM v1
+
+Status: Awareness Mode Active
+Region: Mizoram
+Focus: Cyber Hygiene Deficit
+Data Ethics: Anonymous by Design
+
+Rule 01: Never share OTP.
+Rule 02: Use two factor authentication.
+Rule 03: Do not trust easy money links.
+Rule 04: Verify before clicking.
+
+Kan ti ang.</pre>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">Why this project exists</h2>
+    <p class="section-subtitle">
+      Digital growth is increasing fast, but awareness does not always grow at the same speed. This creates a digital vulnerability gap where ordinary users become exposed to scams, impersonation, fake investment schemes, and social media fraud.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>Cyber Hygiene Deficit</h3>
+        <p>The gap between daily digital usage and basic digital safety habits.</p>
+      </div>
+      <div class="card">
+        <h3>Scam Exposure Society</h3>
+        <p>A condition where suspicious links, fake offers, and impersonation attempts become normal everyday risks.</p>
+      </div>
+      <div class="card">
+        <h3>Ethical Data Collection</h3>
+        <p>No name, phone number, email, bank details, password, OTP, or exact address will be collected.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <h2 class="section-title">Cyber Hygiene Guide</h2>
+    <p class="section-subtitle">Simple rules for safer digital life.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>OTP Safety</h3>
+        <p>Never share OTP codes. Real banks, police, and government offices will not ask for your OTP through calls or messages.</p>
+      </div>
+      <div class="card">
+        <h3>Password Habit</h3>
+        <p>Do not reuse the same password everywhere. One leaked password can expose many accounts.</p>
+      </div>
+      <div class="card">
+        <h3>Two Factor Authentication</h3>
+        <p>Use authenticator apps where possible. It adds another layer even if someone learns your password.</p>
+      </div>
+      <div class="card">
+        <h3>Fake Investment Schemes</h3>
+        <p>Be careful of guaranteed profit, fast return, or unknown trading groups. High return with no risk is usually a warning sign.</p>
+      </div>
+      <div class="card">
+        <h3>Suspicious Links</h3>
+        <p>Do not click links from unknown senders. Check spelling, domain names, and pressure tactics.</p>
+      </div>
+      <div class="card">
+        <h3>Social Media Impersonation</h3>
+        <p>If a friend asks for money from a new account, call them directly before sending anything.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="checker">
+    <h2 class="section-title">Suspicious Message Checker</h2>
+    <p class="section-subtitle">Paste a suspicious message below. This demo checks for common scam warning signs inside your browser only.</p>
+    <div class="checker">
+      <div class="card">
+        <label for="message">Paste message here</label>
+        <textarea id="message" placeholder="Example: Congratulations! You won ₹50,000. Click this link and share OTP to claim..."></textarea>
+        <button class="primary" onclick="checkMessage()">Analyze Message</button>
+        <p class="warning">Do not paste OTP, passwords, bank details, private photos, or personal identity details.</p>
+      </div>
+      <div class="result-box" id="result">
+        Result will appear here.
+      </div>
+    </div>
+  </section>
+
+  <section id="survey">
+    <h2 class="section-title">Anonymous Cyber Hygiene Survey</h2>
+    <p class="section-subtitle">This survey is for academic and public awareness purposes. The goal is to understand cyber safety habits without identifying individual respondents.</p>
+
+    <div class="survey-box">
+      <form onsubmit="submitSurvey(event)">
+        <label>Age Group</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Under 18</option>
+          <option>18 to 24</option>
+          <option>25 to 34</option>
+          <option>35 to 44</option>
+          <option>45 and above</option>
+        </select>
+
+        <label>District</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Aizawl</option>
+          <option>Lunglei</option>
+          <option>Champhai</option>
+          <option>Kolasib</option>
+          <option>Serchhip</option>
+          <option>Mamit</option>
+          <option>Lawngtlai</option>
+          <option>Siaha</option>
+          <option>Khawzawl</option>
+          <option>Hnahthial</option>
+          <option>Saitual</option>
+          <option>Other</option>
+        </select>
+
+        <label>Do you use the same password on multiple accounts?</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Not sure</option>
+        </select>
+
+        <label>Have you received suspicious links, fake offers, or scam messages?</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Not sure</option>
+        </select>
+
+        <label>Do you use two factor authentication?</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>I do not know what it is</option>
+        </select>
+
+        <label>Have you ever lost money or data because of online scams?</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Prefer not to say</option>
+        </select>
+
+        <div class="consent">
+          <input type="checkbox" required />
+          <span>I understand that this survey is anonymous, voluntary, and for research and awareness purposes only. I will not provide names, phone numbers, OTPs, passwords, bank details, or exact addresses.</span>
+        </div>
+
+        <button class="primary" type="submit">Submit Anonymous Response</button>
+      </form>
+      <p id="surveyResult" style="margin-top:18px;color:var(--accent);"></p>
+    </div>
+  </section>
+
+  <footer>
+    Cyber Hygiene Mizoram | Ethical by design | Built for awareness, research, and public safety
+  </footer>
+
+  <script>
+    function checkMessage() {
+      const text = document.getElementById('message').value.toLowerCase();
+      const result = document.getElementById('result');
+
+      const redFlags = [
+        { word: 'otp', message: 'Mentions OTP. Never share OTP with anyone.' },
+        { word: 'password', message: 'Mentions password. Do not share passwords.' },
+        { word: 'urgent', message: 'Uses urgency or pressure tactic.' },
+        { word: 'click', message: 'Asks you to click a link.' },
+        { word: 'won', message: 'Claims you won something unexpectedly.' },
+        { word: 'guaranteed', message: 'Promises guaranteed benefit or profit.' },
+        { word: 'investment', message: 'Mentions investment. Check for fake profit schemes.' },
+        { word: 'kyc', message: 'Mentions KYC. Verify only through official channels.' },
+        { word: 'bank', message: 'Mentions bank. Be careful with financial information.' },
+        { word: 'limited time', message: 'Uses scarcity pressure.' },
+        { word: 'http', message: 'Contains a link. Verify the domain before opening.' }
+      ];
+
+      const found = redFlags.filter(flag => text.includes(flag.word));
+
+      if (!text.trim()) {
+        result.innerHTML = 'Please paste a message first.';
+        return;
+      }
+
+      if (found.length === 0) {
+        result.innerHTML = '<strong>Low obvious risk detected.</strong><br><br>This does not mean the message is fully safe. Always verify the sender and avoid sharing private information.';
+        return;
+      }
+
+      result.innerHTML = '<strong>Warning signs detected:</strong><br><br>' +
+        found.map(flag => '• ' + flag.message).join('<br>') +
+        '<br><br><strong>Advice:</strong> Do not respond immediately. Verify through official sources first.';
+    }
+
+    function submitSurvey(event) {
+      event.preventDefault();
+      document.getElementById('surveyResult').textContent = 'Demo response received. In the real version, this will connect to Google Forms, Firebase, or Supabase.';
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
